@@ -4,15 +4,15 @@ from discord.ext import commands
 
 intents = discord.Intents.default()
 intents.members = True
-prefix = "."
+prefix = ""
 bot = commands.Bot(command_prefix=prefix, help_command=None, intents=intents)
-token = "MTA3MzQyMjc1OTE4NDU2ODQzMQ.GOkpli.xVxp7yiJiI3j4HVcZjt7XF8X4o4t3Uc2lLsYFM"
+token = ""
 
 mydb = mysql.connector.connect(
-  host='localhost',
-  user='root',
+  host='',
+  user='',
   password='',
-  database='gl'
+  database=''
 )
 
 cursor = mydb.cursor(dictionary=True)
@@ -23,16 +23,16 @@ async def on_ready():
 
 @bot.command()
 async def set(ctx):
-sql = "INSERT INTO usuarios (ID, BALANCE) VALUES (%s, %s)"
+sql = "INSERT INTO "" ("", "") VALUES (%s, %s)"
 val = (ctx.author,id, "50")
 cursor.execute(sql, val)
 
 @bot.command()
 async def bal(ctx):
-cursor.execute(f"SELECT BALANCE from usuarios where ID = {ctx.author.id}")
+cursor.execute(f"SELECT "" from "" where "" = {ctx.author.id}")
 
 rows = cursor.fetchall()
 for row in rows:
-  await ctx.send(row["BALANCE"])
+  await ctx.send(row[""])
 
 bot.run(token)
